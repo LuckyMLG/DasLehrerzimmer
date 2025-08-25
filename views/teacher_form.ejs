@@ -1,0 +1,11 @@
+<%- include('partials/header', { title: formTitle }) %>
+<h1><%= formTitle %></h1>
+<form method="POST" action="<%= action %>" enctype="multipart/form-data">
+  <label>Name: <input name="name" value="<%= teacher ? teacher.name : '' %>" required></label><br>
+  <label>Bild: <input type="file" name="image" <%= teacher ? '' : 'required' %>></label><br>
+  <label>Beschreibung:<br>
+    <textarea name="description"><%= teacher ? teacher.description : '' %></textarea>
+  </label><br>
+  <button type="submit">Speichern</button>
+</form>
+<%- include('partials/footer') %>

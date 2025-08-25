@@ -1,0 +1,27 @@
+<%- include('partials/header', { title: teacher.name }) %>
+<h1><%= teacher.name %></h1>
+<img src="<%= teacher.image %>" alt="<%= teacher.name %>" width="200">
+<p><%= teacher.description %></p>
+
+<h2>Bewertung abgeben</h2>
+<form method="POST" action="/teachers/<%= teacher.id %>/rate">
+  <label>Sterne:
+    <select name="stars">
+      <% for (var i=1;i<=5;i++){ %>
+        <option value="<%= i %>"><%= i %></option>
+      <% } %>
+    </select>
+  </label><br>
+  <label>Kommentar:<br>
+    <textarea name="comment"></textarea>
+  </label><br>
+  <button type="submit">Bewerten</button>
+</form>
+
+<h2>Bewertungen</h2>
+<ul>
+<% ratings.forEach(function(r){ %>
+  <li><strong><%= r.stars %> Sterne</strong> von <%= r.username %>: <%= r.comment %></li>
+<% }) %>
+</ul>
+<%- include('partials/footer') %>
