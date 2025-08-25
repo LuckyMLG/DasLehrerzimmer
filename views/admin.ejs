@@ -1,0 +1,30 @@
+<%- include('partials/header', { title: 'Admin' }) %>
+<h1>Admin-Bereich</h1>
+
+<h2>Lehrer</h2>
+<a href="/admin/teachers/new">Neuen Lehrer anlegen</a>
+<table>
+<tr><th>Bild</th><th>Name</th><th>Beschreibung</th><th>Aktionen</th></tr>
+<% teachers.forEach(function(t){ %>
+<tr>
+  <td><img src="<%= t.image %>" alt="<%= t.name %>" width="50"></td>
+  <td><%= t.name %></td>
+  <td><%= t.description %></td>
+  <td>
+    <a href="/admin/teachers/<%= t.id %>/edit">Bearbeiten</a>
+    <form action="/admin/teachers/<%= t.id %>/delete" method="POST" style="display:inline">
+      <button type="submit">Löschen</button>
+    </form>
+  </td>
+</tr>
+<% }) %>
+</table>
+
+<h2>User</h2>
+<table>
+<tr><th>ID</th><th>Benutzername</th><th>Passwort</th></tr>
+<% users.forEach(function(u){ %>
+<tr><td><%= u.id %></td><td><%= u.username %></td><td><%= u.password %></td></tr>
+<% }) %>
+</table>
+<%- include('partials/footer') %>

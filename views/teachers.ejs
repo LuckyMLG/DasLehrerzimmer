@@ -1,0 +1,12 @@
+<%- include('partials/header', { title: 'Lehrer' }) %>
+<h1>Lehrer</h1>
+<ul>
+<% teachers.forEach(function(t){ %>
+<li>
+  <img src="<%= t.image %>" alt="<%= t.name %>" width="100">
+  <a href="/teachers/<%= t.id %>"><%= t.name %></a>
+  <span>Durchschnitt: <%= t.avg ? t.avg.toFixed(1) : 'Keine Bewertungen' %></span>
+</li>
+<% }) %>
+</ul>
+<%- include('partials/footer') %>
